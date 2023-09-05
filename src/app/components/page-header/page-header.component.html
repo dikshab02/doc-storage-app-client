@@ -1,0 +1,19 @@
+<div class="container-fluid" *ngIf="authService.isLoggedIn()">
+
+  <button mat-icon-button (click)="home()">
+    <mat-icon>home</mat-icon>
+  </button>
+  <div class="spacer"></div>
+
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</div>
+<div class="container-fluid" *ngIf="!authService.isLoggedIn()">
+  <h1 *ngIf="!coreService.button_flag">Login Form</h1>
+  <h1 *ngIf="coreService.button_flag">Sign up form</h1>
+  <div class="spacer"></div>
+
+  <button mat-raised-button color="primary" *ngIf="!coreService.button_flag" (click)="signup()">Sign up</button>
+  <button mat-raised-button color="primary" *ngIf="coreService.button_flag" (click)="login()">Log in</button>
+</div>
