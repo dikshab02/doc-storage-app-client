@@ -1,1 +1,19 @@
-<p>document-upload works!</p>
+<div class="text-center">
+  <mat-label>Select File </mat-label>
+  <input class="form-control" type="file" (change)="onChange($event)" placeholder="Select a file">
+  <button (click)="onUpload()" mat-raised-button color="primary" class="btn btn-success">
+    Upload
+  </button>
+</div>
+
+<div class="container text-center" *ngIf="loading">
+  <h3>Loading ...</h3>
+</div>
+
+<div class="error text-center" *ngIf="error">
+  <h3>{{error}}</h3>
+</div>
+
+<div class="success text-center" *ngIf="uploaded">
+  <h3>File Upload Completed</h3>
+</div>

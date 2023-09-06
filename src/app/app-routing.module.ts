@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { IsNotLoginGuard } from './guards/is-not-login.guard';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'document-upload',
+    component: DocumentUploadComponent,
     canActivate: [AuthGuard]
   },
 ];
