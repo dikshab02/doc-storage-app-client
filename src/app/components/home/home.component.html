@@ -2,9 +2,26 @@
 
   <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
     <th mat-header-cell *matHeaderCellDef> {{column.toUpperCase()}} </th>
-    <td mat-cell *matCellDef="let element">
-      {{element[column]}}
-    </td>
+    <tr>
+      <td mat-cell *matCellDef="let element">
+        <button *ngIf="column === 'name'" mat-button (click)="docDetail(element)">
+          {{element[column]}}
+        </button>
+        <div *ngIf="column === 'format'">{{element[column]}}</div>
+        <div *ngIf="column === 'size'">{{element[column] | filesize}}</div>
+        <div *ngIf="column === 'date'" (click)="removeDoc(element)">
+          {{element[column] | date}}
+        </div>
+        <ng-container *ngIf="column === 'action'">
+          <button mat-icon-button (click)="downloadFile(element)">
+            <mat-icon>download</mat-icon>
+          </button>
+          <button mat-icon-button (click)="removeDoc(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-container>
+      </td>
+    </tr>
   </ng-container>
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DocumentService } from 'src/app/services/document.service';
 
 @Component({
@@ -12,13 +13,15 @@ export class DocumentUploadComponent implements OnInit {
   uploaded = false;
   error: any;
   file: File | undefined;
+  description: string = '';
 
-  constructor(private documentService: DocumentService) {}
+  constructor(private documentService: DocumentService, private router: Router) {}
 
   ngOnInit(): void {}
 
   onChange(event: any) {
     this.uploaded = false;
+    this.error = undefined;
     this.file = event.target.files[0];
   }
 
@@ -29,15 +32,16 @@ export class DocumentUploadComponent implements OnInit {
     }
     this.loading = !this.loading;
     this.error = undefined;
-    this.documentService.upload(this.file).subscribe({
+    this.documentService.upload(this.file, this.description).subscribe({
       next: (event: any) => {
         if (typeof event === 'object') {
           this.loading = false;
           this.uploaded = true;
+          this.router.navigateByUrl('/')
         }
       },
       error: (err) => {
-        this.error = err;
+        this.error = 'File upload failed or file format not allowed';
         this.loading = false;
       },
     });

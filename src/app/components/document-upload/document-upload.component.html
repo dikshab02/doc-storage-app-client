@@ -1,10 +1,27 @@
-<div class="text-center">
-  <mat-label>Select File </mat-label>
-  <input class="form-control" type="file" (change)="onChange($event)" placeholder="Select a file">
-  <button (click)="onUpload()" mat-raised-button color="primary" class="btn btn-success">
-    Upload
-  </button>
-</div>
+<mat-card class="example-card">
+
+  <mat-card-actions>
+    <input class="form-control" type="file" (change)="onChange($event)" placeholder="Select a file">
+    <div class="allowed-files">
+      Allowed file types: 'pdf','txt','jpg','jpeg','png', 'xlsx', 'xls', 'doc', 'docx'
+    </div>
+  </mat-card-actions>
+
+</mat-card>
+<mat-card class="example-card">
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-label>Description</mat-label>
+
+    <textarea class="example-full-width desc" matInput placeholder="Write description for document..."
+      [(ngModel)]="description"></textarea>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="onUpload()" mat-raised-button color="primary" class="btn btn-success">
+      Upload
+    </button>
+  </mat-card-actions>
+</mat-card>
 
 <div class="container text-center" *ngIf="loading">
   <h3>Loading ...</h3>

@@ -1,17 +1,17 @@
-v
-.mat-mdc-form-field {
-    margin: 40px 0;
-    width: 500px !important;
+.example-card {
+  max-width: 900px;
+  margin: 30px;
 }
-.mat-toolbar-single-row {
-    height: auto !important;
-    background: transparent;
+
+.desc {
+  height: 100px;
 }
-.mat-toolbar-single-row button {
-    width: 200px;
-}
-.mat-form-field {
-    width: 100%;
+
+.allowed-files {
+  font-size: 14px;
+  color: gray;
+  text-align: end;
+  width: 100%;
 }
 
 .text-center {
@@ -27,4 +27,12 @@ v
     height: 100%;
     cursor: pointer;
     position: absolute;
+}
+
+.card-header-class{
+  background-color: cadetblue;
+}
+
+.example-full-width {
+  width: 100%;
 }

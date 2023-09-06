@@ -1,1 +1,48 @@
-<p>document-detail works!</p>
+<!-- Document detail view Header -->
+<mat-toolbar color="primary">
+  <!-- Name -->
+  {{docDetailObj?.name}}
+
+  <!-- Spacer -->
+  <div class="spacer"></div>
+
+  <!-- Download -->
+  <button mat-icon-button (click)="downloadFile()">
+    <mat-icon>download</mat-icon>
+  </button>
+
+  <!-- Actions -->
+  <button mat-icon-button (click)="removeDoc()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- Table to show document properties -->
+<table class="doc-property">
+  <tr>
+    <th class="property-key">Property</th>
+    <th class="property-value">Value</th>
+  </tr>
+
+  <!-- Use below code with ngFor -->
+  <tr>
+    <td align="left" class="property-key">Type:</td>
+    <td class="property-value">{{docDetailObj?.ext}}</td>
+  </tr>
+  <tr>
+    <td align="left" class="property-key">Size:</td>
+    <td class="property-value">{{(docDetailObj ? +docDetailObj.size : 0) | filesize}}</td>
+  </tr>
+  <tr>
+    <td align="left" class="property-key">Description:</td>
+    <td class="property-value">{{docDetailObj?.description}}</td>
+  </tr>
+  <tr>
+    <td align="left" class="property-key">Created on:</td>
+    <td class="property-value">{{docDetailObj?.createdAt | date}}</td>
+  </tr>
+  <tr>
+    <td align="left" class="property-key">Path:</td>
+    <td class="property-value">{{docDetailObj?.path}}</td>
+  </tr>
+</table>

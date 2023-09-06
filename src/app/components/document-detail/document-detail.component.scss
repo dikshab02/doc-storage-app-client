@@ -1,0 +1,44 @@
+.doc-property {
+  width: 50%;
+  margin: auto;
+  min-width: fit-content;
+  border-left: solid 1px #efefef;
+  border-right: solid 1px #efefef;
+  border-bottom: solid 1px #efefef;
+  box-shadow: 3px 3px #c9c9c9, -1em 0 0.4em #2c2c2c;
+
+  th.property-key,
+  th.property-value {
+    // color: white;
+    font-size: 16px;
+    padding: 16px;
+    font-weight: normal;
+    font-style: italic;
+    color: gray;
+    text-align: left;
+    border-bottom: solid 1px #efefef;
+  }
+
+  td.property-key,
+  td.property-value {
+    background-color: white;
+    color: #404040;
+    font-size: 14px;
+    padding: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom: solid 1px #efefef;
+  }
+}
+
+@media (max-width: 1000px) {
+  .doc-property {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .doc-property {
+    width: 100%;
+  }
+}

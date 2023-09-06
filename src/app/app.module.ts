@@ -21,6 +21,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CookieInterceptor } from './interceptors/cookie.interceptor';
 import {MatTableModule} from '@angular/material/table';
+import { MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import { FilesizePipe } from './pipes/filesize.pipe';
+import { MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import {MatTableModule} from '@angular/material/table';
     HomeComponent,
     SignUpComponent,
     DocumentDetailComponent,
-    DocumentUploadComponent
+    DocumentUploadComponent,
+    FilesizePipe
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,10 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     MatProgressBarModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    MatDividerModule,
+    MatDialogModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: CookieInterceptor, multi:true

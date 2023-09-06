@@ -16,4 +16,5 @@ export interface IDocument {
   destination: string;
   mimetype: string;
   path: string;
+  description?: string;
 }

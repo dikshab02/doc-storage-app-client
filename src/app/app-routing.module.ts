@@ -6,38 +6,45 @@ import { AuthGuard } from './guards/auth.guard';
 import { IsNotLoginGuard } from './guards/is-not-login.guard';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
+import { DocumentDetailComponent } from './components/document-detail/document-detail.component';
+import { DocResolverService } from './resolver/doc-resolver.service';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login'
+    redirectTo: 'login',
   },
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [IsNotLoginGuard]
+    canActivate: [IsNotLoginGuard],
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
-    canActivate: [IsNotLoginGuard]
-
+    canActivate: [IsNotLoginGuard],
   },
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'document-upload',
     component: DocumentUploadComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'document-detail/:docId',
+    resolve: { documentDetail: DocResolverService },
+    component: DocumentDetailComponent,
+    canActivate: [AuthGuard],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
