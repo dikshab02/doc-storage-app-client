@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ILogin } from 'src/app/models/login.model';
 import { HttpCallService } from 'src/app/services/http-call.service';
+import { confirmPasswordValidator } from 'src/app/validators/password-validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,16 +23,24 @@ export class SignUpComponent {
     this.signupForm = this.fb.group(
       {
         username: ['', Validators.required],
-        password: ['', Validators.required],
+        password1: new FormControl<string>('', [Validators.required]),
+        password2: new FormControl<string>('', [Validators.required]),
+
       },
-      { validator: null }
+      { validators: confirmPasswordValidator }
     );
   }
 
   signup() {
-
-    this.httpCallService.signup(this.signupForm?.value).subscribe(() => {
+    if(this.signupForm.invalid)
+    return;
+    const credentials: ILogin = {
+      username : this.signupForm.value.username,
+      password: this.signupForm.value.password1
+    }
+    this.httpCallService.signup(credentials).subscribe(() => {
       this.router.navigate(['login']);
     });
   }
+
 }

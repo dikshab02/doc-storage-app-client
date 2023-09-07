@@ -13,7 +13,7 @@ export class HttpCallService {
   constructor(private http: HttpClient) {}
 
   login(credentials: {
-    email: string;
+    username: string;
     password: string;
   }): Observable<ServerResponse<ILogin>> {
     return this.http.post<ServerResponse<ILogin>>(
