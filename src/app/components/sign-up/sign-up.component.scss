@@ -1,0 +1,32 @@
+.login {
+  width: 400px;
+  margin: 16px auto;
+  font-size: 16px;
+}
+
+.login-header,
+.login-container p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.login-header {
+  background: rgb(12, 77, 129);
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+

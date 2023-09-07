@@ -9,9 +9,8 @@ import { HttpCallService } from 'src/app/services/http-call.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent {
-  username: string = '';
-  password: string = '';
-  signupForm: FormGroup | undefined;
+
+  signupForm: any = FormGroup;
   constructor(
     private router: Router,
     private httpCallService: HttpCallService,
@@ -29,12 +28,8 @@ export class SignUpComponent {
   }
 
   signup() {
-    const credentials = {
-      username: this.username,
-      password: this.password,
-    };
 
-    this.httpCallService.signup(credentials).subscribe(() => {
+    this.httpCallService.signup(this.signupForm?.value).subscribe(() => {
       this.router.navigate(['login']);
     });
   }
